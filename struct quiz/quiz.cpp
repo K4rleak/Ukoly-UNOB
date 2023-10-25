@@ -17,7 +17,7 @@ int main ()
     fstream myfile;
     string line,path;
     vector<Otazka> radky;
-    int skore;
+    int skore=0;
     //cout<<"Zadej cestu:"; cin >> path;
      myfile.open("questions.txt",ios::in);
     if (myfile.is_open()) {
