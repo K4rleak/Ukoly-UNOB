@@ -15,6 +15,7 @@ class Library:
         if book.id not in list(map(lambda x: x.id, self.books)):
             self.books.append(book)
             self.books=sorted(self.books,key=lambda x: x.author)
+            print("Kniha přidána s ID: " + str(book.id))
         else:
             print("Id už je použito")
     def get_unique_id(self):
