@@ -14,6 +14,7 @@ public:
     sf::Vector2f getFinal() const;
 
     void draw(sf::RenderWindow& window);
+    void posun();
 
 // private:
     sf::RectangleShape surface;

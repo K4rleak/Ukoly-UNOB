@@ -27,7 +27,7 @@ Sloup::Sloup() {
 }
 
 void Sloup::draw(sf::RenderWindow& window){
-    ctverecek.setPosition(position.x + surface.getSize().x/2 - 5, window.getSize().y - 150);
+    ctverecek.setPosition(surface.getPosition().x + surface.getSize().x/2 - 5, window.getSize().y - 150);
     window.draw(surface);
     window.draw(ctverecek);
     }
@@ -42,4 +42,11 @@ sf::Vector2f Sloup::getPosition() const {
 
 sf::Vector2f Sloup::getFinal() const {
     return final;
+}
+
+void Sloup::posun(){
+    sf::Vector2f currentPosition = surface.getPosition();
+    currentPosition.x -= 5;
+    surface.setPosition(currentPosition);
+    ctverecek.setPosition(position.x + surface.getSize().x/2 - 5, 390);
 }

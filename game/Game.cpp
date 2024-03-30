@@ -1,6 +1,9 @@
 #include "Game.hpp"
 
-Game::Game(sf::RenderWindow& window) {
+Game::Game(sf::RenderWindow& window):
+    most(sloup1.surface.getPosition() + sf::Vector2f(sloup1.surface.getSize().x, window.getSize().y - 149 ))
+{
+    window.setFramerateLimit(60);
     backgroundTexture.loadFromFile("background.jpg");
     backgroundSprite.setTexture(backgroundTexture);
     kostka.setSize(sf::Vector2f(2,2));
@@ -17,9 +20,6 @@ Game::Game(sf::RenderWindow& window) {
     player.playerSprite.setPosition(sloup1.surface.getSize().x / 2 - player.width/2,window.getSize().y - 150-player.height);
     window.draw(player.playerSprite);
     window.display();
-    //backgroundSprite.setTexture(backgroundTexture);
-
-    // Initialize member variables, load resources, etc.
 }
 
 // void Game::update(sf::RenderWindow& window) {
@@ -27,27 +27,26 @@ Game::Game(sf::RenderWindow& window) {
 // }
 
 void Game::draw(sf::RenderWindow& window) {
-//     // Clear the window
+
 window.draw(backgroundSprite);
-
-//     window.clear(sf::Color::Black);
-
-//     // Draw game objects, UI, etc.
 sloup1.draw(window);
 sloup2.draw(window);
-window.draw(kostka);
-// window.display();
+most.draw(window);
 
-//     // Example:
-//     // window.draw(player);
-//     // window.draw(enemy);
-
-//     // End drawing
-//     window.display();
 }
 
-void Game::kresleni(sf::RenderWindow& window){
-    window.draw(kostka);
-    kostka.move(0,-2);
-    // window.display();
+void Game::kresleni(){
+    most.rize();
+}
+
+
+void Game::rotate(bool* rotate){
+    most.rotate(rotate);
+    
+}
+
+void Game::posun(){
+    sloup1.posun();
+    sloup2.posun();
+    most.most.setSize(sf::Vector2f(0, 2));
 }
