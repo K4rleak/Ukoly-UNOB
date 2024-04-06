@@ -40,6 +40,7 @@ void Game::kresleni(sf::RenderWindow& window,bool* stav){
 }
 
 void Game::beh(bool* stav){
+    most.mereni(sloup1.surface.getSize().x,sloup2.surface.getPosition().x);
     float posx=sloup2.surface.getPosition().x+sloup2.surface.getSize().x/2;
     player.beh(stav,posx);
 }
@@ -48,13 +49,14 @@ void Game::rotate(bool* rotate){
     most.rotate(rotate);
 }
 
-void Game::posun(bool* move){
+void Game::posun(bool* move,sf::RenderWindow& window){
     sloup1.posun();
     sloup2.posun();
     player.posun();
     most.reset();
     if (sloup2.surface.getPosition().x<=0){
         *move=false;
+        sloup2.surface.setPosition(0,window.getSize().y - 150);
         
     }
 }
@@ -62,6 +64,9 @@ void Game::posun(bool* move){
 void Game::spawn(sf::RenderWindow& window){
     sloup1=sloup2;
     sloup2.reset(window);
+    sf::Vector2f startPoint(sloup1.surface.getSize().x, window.getSize().y - 149);
+    most.setpos(startPoint);
+
 }
 
 void Game::prijezd(bool* stav){

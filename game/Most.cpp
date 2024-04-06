@@ -29,4 +29,13 @@ void Most::draw(sf::RenderWindow& window) {
 
 void Most::reset(){
     most.setSize(sf::Vector2f(0, 2));
+    most.setRotation(90);
+}
+
+void Most::setpos(sf::Vector2f startPoint){
+    most.setPosition(startPoint);
+}
+
+void Most::mereni(float sirka,float vzdalenost){
+    if (most.getSize().x)
 }

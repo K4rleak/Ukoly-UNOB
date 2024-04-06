@@ -11,6 +11,8 @@ public:
     void draw(sf::RenderWindow& window);
     void rotate(bool* rotate);
     void reset();
+    void setpos(sf::Vector2f startPoint);
+    void mereni(float sirka,float vzdalenost);
 private:
     sf::RectangleShape most;
 };

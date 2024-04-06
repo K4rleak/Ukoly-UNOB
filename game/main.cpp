@@ -6,6 +6,7 @@ bool rotate=false;
 bool move=false;
 bool beh=false;
 bool iscoming=false;
+bool isdone=true;
 
 sf::Vector2f size;
 
@@ -20,11 +21,18 @@ int main() {
             if (event.type == sf::Event::Closed)
                 window.close();
             else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Up){
+                if(isdone==true){
                 kresleni = true;
+                }
+                
             }
             else if (event.type == sf::Event::KeyReleased && event.key.code == sf::Keyboard::Up){
-                kresleni = false; 
-                rotate =true;
+                
+                kresleni = false;
+                if(isdone==true){
+                    rotate =true;
+                    isdone=false;
+                    }
             }
         }
 
@@ -44,7 +52,7 @@ int main() {
     }
 
     if (move){
-        game.posun(&move);
+        game.posun(&move,window);
         if (!move){
         iscoming=true;
         game.spawn(window);
@@ -53,6 +61,9 @@ int main() {
 
     if (iscoming){
         game.prijezd(&iscoming);
+        if(!iscoming){
+            isdone=true;
+        }
     }
 
     //     // Update the game state
