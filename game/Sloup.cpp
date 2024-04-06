@@ -4,8 +4,7 @@ Sloup::Sloup() {
     
     std::srand(static_cast<unsigned int>(std::time(nullptr)));
 
-    // Initialize surface with random width between 50 and 90 pixels, and height of 150 pixels
-    int width = std::rand() % 41 + 50; // Random number between 50 and 90
+    int width = std::rand() % 41 + 50; 
     surface.setSize(sf::Vector2f(width, 150));
     ctverecek.setSize(sf::Vector2f(10,10));
     // Fill the surface with black color
@@ -49,4 +48,27 @@ void Sloup::posun(){
     currentPosition.x -= 5;
     surface.setPosition(currentPosition);
     ctverecek.setPosition(position.x + surface.getSize().x/2 - 5, 390);
+}
+
+void Sloup::reset(sf::RenderWindow& window){
+    sf::Vector2f currentPosition = surface.getPosition();
+    currentPosition.x = window.getSize().x;
+    surface.setPosition(currentPosition);
+
+    std::srand(static_cast<unsigned int>(std::time(nullptr)));
+    int width = std::rand() % 41 + 50; 
+    surface.setSize(sf::Vector2f(width, 150));
+
+    final.x=90 + std::rand() % 150 + 200;
+}
+
+void Sloup::prijezd(bool* stav){
+    sf::Vector2f currentPosition = surface.getPosition();
+    currentPosition.x -=5;
+    surface.setPosition(currentPosition);
+    if (currentPosition.x<=final.x){
+        currentPosition.x=final.x;
+        surface.setPosition(currentPosition);
+        *stav=false;
+    }
 }

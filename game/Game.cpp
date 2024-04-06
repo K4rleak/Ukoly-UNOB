@@ -27,26 +27,43 @@ Game::Game(sf::RenderWindow& window):
 // }
 
 void Game::draw(sf::RenderWindow& window) {
-
 window.draw(backgroundSprite);
+player.draw(window);
 sloup1.draw(window);
 sloup2.draw(window);
 most.draw(window);
 
 }
 
-void Game::kresleni(){
-    most.rize();
+void Game::kresleni(sf::RenderWindow& window,bool* stav){
+    most.rize(window,stav);
 }
 
+void Game::beh(bool* stav){
+    float posx=sloup2.surface.getPosition().x+sloup2.surface.getSize().x/2;
+    player.beh(stav,posx);
+}
 
 void Game::rotate(bool* rotate){
     most.rotate(rotate);
-    
 }
 
-void Game::posun(){
+void Game::posun(bool* move){
     sloup1.posun();
     sloup2.posun();
-    most.most.setSize(sf::Vector2f(0, 2));
+    player.posun();
+    most.reset();
+    if (sloup2.surface.getPosition().x<=0){
+        *move=false;
+        
+    }
+}
+
+void Game::spawn(sf::RenderWindow& window){
+    sloup1=sloup2;
+    sloup2.reset(window);
+}
+
+void Game::prijezd(bool* stav){
+    sloup2.prijezd(stav);
 }

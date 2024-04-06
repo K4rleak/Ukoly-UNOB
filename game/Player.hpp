@@ -8,12 +8,14 @@ class Player {
 public:
 Player();
 void draw(sf::RenderWindow& window);
+void beh(bool* stav,float posx);
+void posun();
 
     
-    sf::Texture playerTexture;
-    sf::Sprite playerSprite;
-    float width;
-    float height;
+sf::Texture playerTexture;
+sf::Sprite playerSprite;
+float width;
+float height;
 //     // Declare member variables, such as game objects, resources, etc.
 };
 

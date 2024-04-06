@@ -13,9 +13,12 @@ public:
 Game(sf::RenderWindow& window);
 // void update(sf::RenderWindow& window);
 void draw(sf::RenderWindow& window);
-void kresleni();
+void kresleni(sf::RenderWindow& window,bool* stav);
 void rotate(bool* rotate);
-void posun();
+void posun(bool* move);
+void beh(bool* stav);
+void prijezd(bool* stav);
+void spawn(sf::RenderWindow& window);
 
 private:
     sf::Texture backgroundTexture;

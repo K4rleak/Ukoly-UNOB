@@ -9,9 +9,10 @@ Most::Most(const sf::Vector2f& startPoint) {
 }
 
 
-void Most::rize(){
+void Most::rize(sf::RenderWindow& window,bool* stav){
     sf::Vector2f size = most.getSize();
     most.setSize(sf::Vector2f(size.x - 2.0f, size.y));
+    //here
 }
 
 void Most::rotate(bool* rotate){
@@ -24,4 +25,8 @@ void Most::rotate(bool* rotate){
 
 void Most::draw(sf::RenderWindow& window) {
     window.draw(most);
+}
+
+void Most::reset(){
+    most.setSize(sf::Vector2f(0, 2));
 }

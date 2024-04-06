@@ -15,6 +15,8 @@ public:
 
     void draw(sf::RenderWindow& window);
     void posun();
+    void reset(sf::RenderWindow& window);
+    void prijezd(bool* stav);
 
 // private:
     sf::RectangleShape surface;

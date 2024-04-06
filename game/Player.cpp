@@ -8,33 +8,27 @@ Player::Player() {
     width = bounds.width;
     height=bounds.height;
 
-    // backgroundTexture.loadFromFile("background.jpg");
-    // backgroundSprite.setTexture(backgroundTexture);
-    // // sf::Sprite backgroundSprite(backgroundTexture);
-    // window.draw(backgroundSprite);
-    // window.display();
-    // sf::Vector2u textureSize = backgroundTexture.getSize();
-    // std::cout << "Background Height: " << textureSize.y << std::endl;
-    //backgroundSprite.setTexture(backgroundTexture);
-
-    // Initialize member variables, load resources, etc.
 }
 
-// void Enemy::update(sf::RenderWindow& window) {
-//     // Update Enemy logic, handle input, etc.
-// }
 
 void Player::draw(sf::RenderWindow& window) {
     window.draw(playerSprite);
-//     // Clear the window
-
-//     window.clear(sf::Color::Black);
-
-//     // Draw Enemy objects, UI, etc.
-//     // Example:
-//     // window.draw(player);
-//     // window.draw(enemy);
-
-//     // End drawing
-//     window.display();
 }
+
+void Player::beh(bool* stav,float posx) {
+    sf::Vector2f currentPosition = playerSprite.getPosition();
+    currentPosition.x += 3;
+    playerSprite.setPosition(currentPosition);
+    if (playerSprite.getPosition().x>=posx-width/2){
+        currentPosition.x =posx-width/2;
+        playerSprite.setPosition(currentPosition);
+        *stav=false;
+    }
+}
+
+void Player::posun() {
+    sf::Vector2f currentPosition = playerSprite.getPosition();
+    currentPosition.x -= 5;
+    playerSprite.setPosition(currentPosition);
+}
+

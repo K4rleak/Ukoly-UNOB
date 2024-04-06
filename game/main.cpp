@@ -4,6 +4,8 @@
 bool kresleni = false;
 bool rotate=false;
 bool move=false;
+bool beh=false;
+bool iscoming=false;
 
 sf::Vector2f size;
 
@@ -28,16 +30,29 @@ int main() {
 
 
     if (kresleni)
-        game.kresleni();
+        game.kresleni(window,&kresleni);
     
     if (rotate){
         game.rotate(&rotate);
         if (!rotate)
+        beh=true;
+    }
+    if (beh){
+        game.beh(&beh);
+        if (!beh)
         move=true;
     }
 
     if (move){
-        game.posun();
+        game.posun(&move);
+        if (!move){
+        iscoming=true;
+        game.spawn(window);
+        }
+    }
+
+    if (iscoming){
+        game.prijezd(&iscoming);
     }
 
     //     // Update the game state
