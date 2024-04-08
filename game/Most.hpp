@@ -2,6 +2,7 @@
 #define MOST_HPP
 
 #include <SFML/Graphics.hpp>
+#include <iostream>
 
 class Most {
 public:
@@ -12,7 +13,8 @@ public:
     void rotate(bool* rotate);
     void reset();
     void setpos(sf::Vector2f startPoint);
-    void mereni(float sirka,float vzdalenost);
+    int getwidth();
+    void mereni(float sirka,sf::RectangleShape s2surface,int* presnost);
 private:
     sf::RectangleShape most;
 };

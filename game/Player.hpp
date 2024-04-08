@@ -8,8 +8,9 @@ class Player {
 public:
 Player();
 void draw(sf::RenderWindow& window);
-void beh(bool* stav,float posx);
+void beh(bool* stav,float posx,int presnost);
 void posun();
+void smrt();
 
     
 sf::Texture playerTexture;

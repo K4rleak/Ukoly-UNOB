@@ -7,6 +7,7 @@ bool move=false;
 bool beh=false;
 bool iscoming=false;
 bool isdone=true;
+bool ismeasuring=false;
 
 sf::Vector2f size;
 
@@ -43,8 +44,14 @@ int main() {
     if (rotate){
         game.rotate(&rotate);
         if (!rotate)
+        ismeasuring=true;
+    }
+    if (ismeasuring){
+        game.mereni(&ismeasuring);
+        if(!ismeasuring)
         beh=true;
     }
+
     if (beh){
         game.beh(&beh);
         if (!beh)
@@ -52,10 +59,17 @@ int main() {
     }
 
     if (move){
+        if(game.presnost ==0){
+            move=false;
+            game.smrt(window);
+            isdone=true;
+        }
+        else{
         game.posun(&move,window);
         if (!move){
         iscoming=true;
         game.spawn(window);
+        }
         }
     }
 
