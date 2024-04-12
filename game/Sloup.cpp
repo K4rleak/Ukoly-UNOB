@@ -1,5 +1,5 @@
 #include "Sloup.hpp"
-
+//Constructor
 Sloup::Sloup() {
     
     std::srand(static_cast<unsigned int>(std::time(nullptr)));
@@ -24,7 +24,7 @@ Sloup::Sloup() {
     // Set final position off the left side of the screen
     final = sf::Vector2f(0, sf::VideoMode::getDesktopMode().height - surface.getSize().y);
 }
-
+//Draws the pillar on the screen
 void Sloup::draw(sf::RenderWindow& window){
     ctverecek.setPosition(surface.getPosition().x + surface.getSize().x/2 - 5, window.getSize().y - 150);
     window.draw(surface);
@@ -42,14 +42,14 @@ sf::Vector2f Sloup::getPosition() const {
 sf::Vector2f Sloup::getFinal() const {
     return final;
 }
-
+//Moves the pillar 5 pixels to the left
 void Sloup::posun(){
     sf::Vector2f currentPosition = surface.getPosition();
     currentPosition.x -= 5;
     surface.setPosition(currentPosition);
     ctverecek.setPosition(position.x + surface.getSize().x/2 - 5, 390);
 }
-
+//Resets the pillar and makes it new random width
 void Sloup::reset(sf::RenderWindow& window){
     sf::Vector2f currentPosition = surface.getPosition();
     currentPosition.x = window.getSize().x;
@@ -61,7 +61,7 @@ void Sloup::reset(sf::RenderWindow& window){
 
     final.x=90 + std::rand() % 150 + 200;
 }
-
+//Movement of the pillar, when its coming from outside of the screen
 void Sloup::prijezd(bool* stav){
     sf::Vector2f currentPosition = surface.getPosition();
     currentPosition.x -=5;

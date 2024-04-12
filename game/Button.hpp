@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 
+// Class definition for a Button
 class Button {
 public:
     Button(float x, float y, std::string textureFile);

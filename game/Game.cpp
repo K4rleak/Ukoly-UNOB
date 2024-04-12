@@ -1,5 +1,6 @@
 #include "Game.hpp"
 
+//Constructor and initialization of the game(sets the default values and positions)
 Game::Game(sf::RenderWindow& window):
     most(sloup1.surface.getPosition() + sf::Vector2f(sloup1.surface.getSize().x, window.getSize().y - 149 ))
 {
@@ -26,7 +27,7 @@ Game::Game(sf::RenderWindow& window):
     window.display();
 }
 
-
+ // Draw background and game elements
 void Game::draw(sf::RenderWindow& window) {
 window.draw(backgroundSprite);
 player.draw(window);
@@ -35,11 +36,11 @@ sloup2.draw(window);
 most.draw(window);
 counter.draw(window);
 }
-
+//Makes the bridge rize
 void Game::kresleni(sf::RenderWindow& window,bool* stav){
     most.rize(window,stav);
 }
-
+//Makes the player run to the next pillar
 void Game::beh(bool* stav){
     float posx=1;
     if(presnost==1 || presnost==2)
@@ -48,7 +49,7 @@ void Game::beh(bool* stav){
     posx=sloup1.surface.getSize().x+most.getwidth();
     player.beh(stav,posx,presnost);
 }
-
+//measures if the bridge reaches the next pillar
 void Game::mereni(bool* stav){
     most.mereni(sloup1.surface.getSize().x,sloup2.surface,&presnost);
     *stav=false;
@@ -64,11 +65,11 @@ void Game::mereni(bool* stav){
 
     }
 }
-
+//Rotates the bridge
 void Game::rotate(bool* rotate){
     most.rotate(rotate);
 }
-
+//Moves the whole screen to left(except the background)
 void Game::posun(bool* move,sf::RenderWindow& window){
     sloup1.posun();
     sloup2.posun();
@@ -79,7 +80,7 @@ void Game::posun(bool* move,sf::RenderWindow& window){
         sloup2.surface.setPosition(0,window.getSize().y - 150);
     }
 }
-
+//Creates new pillar
 void Game::spawn(sf::RenderWindow& window){
     sloup1=sloup2;
     sloup2.reset(window);
@@ -87,10 +88,12 @@ void Game::spawn(sf::RenderWindow& window){
     most.setpos(startPoint);
 
 }
-
+//Makes the new pillar come
 void Game::prijezd(bool* stav){
     sloup2.prijezd(stav);
 }
+
+//Handles the death and restarting of the game
 void Game::smrt(sf::RenderWindow& window){
     Button restart(200, 50, "Restart.png");
     

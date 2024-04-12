@@ -9,15 +9,15 @@ ScoreCounter::ScoreCounter() : score(0) {
     scoreText.setCharacterSize(35);
     scoreText.setFillColor(sf::Color::Red);
 }
-
+//Resets the score
 void ScoreCounter::reset(){
     score=0;
 }
-
+//Adds 1 point to the score
 void ScoreCounter::increaseScore() {
     score++;
 }
-
+//Returns the score
 int ScoreCounter::getScore() const {
     return score;
 }

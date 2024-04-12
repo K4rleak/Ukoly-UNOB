@@ -15,7 +15,6 @@ class Game {
 public:
 int presnost;
 Game(sf::RenderWindow& window);
-// void update(sf::RenderWindow& window);
 void draw(sf::RenderWindow& window);
 void kresleni(sf::RenderWindow& window,bool* stav);
 void rotate(bool* rotate);

@@ -1,5 +1,5 @@
 #include "Player.hpp"
-
+//Constructor
 Player::Player() {
 
     playerTexture.loadFromFile("Player.png");
@@ -10,11 +10,11 @@ Player::Player() {
 
 }
 
-
+//Draws the player on the screen
 void Player::draw(sf::RenderWindow& window) {
     window.draw(playerSprite);
 }
-
+//Makes the player run to the next pillar
 void Player::beh(bool* stav,float posx,int presnost) {
     sf::Vector2f currentPosition = playerSprite.getPosition();
     currentPosition.x += 3;
@@ -34,14 +34,7 @@ void Player::beh(bool* stav,float posx,int presnost) {
         }
     }
 }
-// void Player::smrt(){
-//     for(int y=playerSprite.getPosition().y; y>-10;y--)
-//     {
-//         sf::Vector2f currentPosition = playerSprite.getPosition();
-//         currentPosition.y = y;
-//         playerSprite.setPosition(currentPosition);
-//     }
-// }
+//Moves the player to the left
 void Player::posun() {
     sf::Vector2f currentPosition = playerSprite.getPosition();
     currentPosition.x -= 5;
